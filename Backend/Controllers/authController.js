@@ -11,7 +11,8 @@ const signup = async(req, res)=>{
                 .json({ message: "User is already exist, you can lagin", success:false });
         }
         const  userModel= new UserModel({ firstName, lastName, email, password });
-        // userModel.password = await bcrypt.hash(password,10);
+        userModel.password = await bcrypt.hash(password,10);
+        // userModel.password = await bcrypt.hashSync(myPlaintextPassword,10);
         
         await userModel.save();
         res.status(201)
@@ -31,18 +32,20 @@ const login = async(req,res)=>{
     try {
         const { email, password} = req.body
         const user = await UserModel.findOne({ email });
-        const errorMsg= 'Auth failed  email or password is wrong';
+        const errorMsg = 'Auth failed  email or password is wrong';
         if(!user){
             return res.status(403)
-                .json({ message: errorMsg, success:false});
+                .json({ error : '  email or password is wrong', success:false});
             
         }
- 
-    //    const isPassEqual = await user(password, user.password);
-    //    if(!isPassEqual){
-    //     return res.status(403)
-    //     .json({ message: errorMsg, success:false });
-    //    }
+
+       const isPassEqual = await bcrypt.compare(password, user.password);
+    
+       
+       if(!isPassEqual){
+        return res.status(403)
+        .json({ message: errorMsg , success:false });
+       }
         const jwtToken = jwt.sign(
             { email: user.email, _id: user._id},
             process.env.JWT_SECRET,
@@ -66,7 +69,11 @@ const login = async(req,res)=>{
     }
 }
 
+
+
 module.exports={
     signup,
     login
 }
+
+

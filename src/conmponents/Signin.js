@@ -4,7 +4,7 @@ import "../App.css"
 
 import { handleError, handleSuccess } from '../utils';
 import { Link, useNavigate } from 'react-router-dom';
-
+import {ToastContainer} from "react-toastify"
 import { IoMail } from "react-icons/io5";
 import { FaLock } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -38,6 +38,7 @@ const Signin = () => {
         }
         try {
             const url = "http://localhost:8080/auth/login"
+            // const url = "http://localhost:5252/api/auth/login"
             const response = await fetch(url,{
                 method:"POST",
                 headers: {
@@ -87,7 +88,7 @@ const Signin = () => {
                         <i className="fas fa-lock">
                         <FaLock />
                         </i>
-                        <input type="password" name='password' onChange={handlechange} value={loginInfo.password}   id="password"   placeholder="password"  required/>
+                        <input type="password" name='password' onChange={handlechange} value={loginInfo.password}   id="password"   placeholder="password" />
                         <label for="password">Password</label>
                     </div>
                     <p className="recover">
@@ -115,6 +116,7 @@ const Signin = () => {
                         <p>Don't have account yet ?</p>
                         <Link to="/Register"><button   id="signInButton">Sign In</button></Link>
                     </div>
+                    <ToastContainer/>
 
     </div>
     </div>

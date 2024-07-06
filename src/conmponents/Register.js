@@ -40,6 +40,7 @@ const Register = () => {
         }
         try {
             const url = "http://localhost:8080/auth/signup"
+            // const url = "http://localhost:5252/api/auth/signup"
             const response = await fetch(url,{
                 method:"POST",
                 headers: {
@@ -97,7 +98,7 @@ const Register = () => {
                         <i className="fas fa-lock">
                         <FaLock />
                         </i>
-                        <input type="password" name='password' onChange={handlechange } value={signupInfo.password} autoFocus  id="password"   placeholder="password"  required/>
+                        <input type="password" name='password' onChange={handlechange } value={signupInfo.password} autoFocus  id="password"   placeholder="password"  />
                         <label for="password">Password</label>
                     </div>
                    
