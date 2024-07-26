@@ -39,7 +39,8 @@ const Register = () => {
           return handleError(" firstName, lastName, email and password are required")  
         }
         try {
-            const url = "http://localhost:8080/auth/signup"
+            const url = "http://localhost:8080/signup"
+            // const url = "http://localhost:1000/api/users"
             // const url = "http://localhost:5252/api/auth/signup"
             const response = await fetch(url,{
                 method:"POST",
@@ -78,28 +79,31 @@ const Register = () => {
             <IoPerson/>
             </i>
             <input type="text" name="firstName"  id="firstName" value={signupInfo.firstName} onChange={handlechange} autoFocus placeholder="First name"  required/>
-            <label for="firstName">First Name</label>
+            <label htmlFor="firstName">First Name</label>
         </div>
+
+
+     
             <div className="input-group">
                 <i className="fas fa-user">
                 <IoPerson/>
                 </i>
             <input type="text" name="lastName" id="lastName" onChange={handlechange} value={signupInfo.lastName} autoFocus placeholder="Last name"  required />
-                <label for="lastName">Last name</label>
+                <label htmlFor="lastName">Last name</label>
             </div>
                 <div className="input-group">
                     <i className="fas fa-enveloep">
                     <IoMail />
                     </i>
                     <input type="email" onChange={handlechange} value={signupInfo.email} name="email" autoFocus id="email" placeholder=" Email"  required/>
-                    <label for="email">Email</label>
+                    <label htmlFor="email">Email</label>
                 </div>
                     <div className="input-group">
                         <i className="fas fa-lock">
                         <FaLock />
                         </i>
                         <input type="password" name='password' onChange={handlechange } value={signupInfo.password} autoFocus  id="password"   placeholder="password"  />
-                        <label for="password">Password</label>
+                        <label htmlFor="password">Password</label>
                     </div>
                    
                     <input type="submit" className="btn"   value="Sign Up" name="Sign Up"/>

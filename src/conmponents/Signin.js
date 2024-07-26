@@ -2,13 +2,13 @@ import React from 'react'
 import { useState } from 'react';
 import "../App.css"
 
-import { handleError, handleSuccess } from '../utils';
 import { Link, useNavigate } from 'react-router-dom';
 import {ToastContainer} from "react-toastify"
 import { IoMail } from "react-icons/io5";
 import { FaLock } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
+import { handleError, handleSuccess } from '../utils';
 
 const Signin = () => {
 
@@ -32,12 +32,14 @@ const Signin = () => {
 
     const handleLogin = async(e)=>{
         e.preventDefault()
-        const {email,password}= loginInfo
+        const error = " email and password are required"
+        const {email,password }= loginInfo
         if( !email || !password){
-          return handleError(" email and password are required")  
+            return handleError(error)  
         }
         try {
-            const url = "http://localhost:8080/auth/login"
+            // const url = "http://localhost:1000/api/users/login"
+            const url = "http://localhost:8080/login"
             // const url = "http://localhost:5252/api/auth/login"
             const response = await fetch(url,{
                 method:"POST",
@@ -82,14 +84,14 @@ const Signin = () => {
                     <IoMail />
                     </i>
                     <input type="email" name="email" onChange={handlechange} value={loginInfo.email} id="email" placeholder=" Email"  required/>
-                    <label for="email">Email</label>
+                    <label htmlFor="email">Email</label>
                 </div>
                     <div className="input-group">
                         <i className="fas fa-lock">
                         <FaLock />
                         </i>
                         <input type="password" name='password' onChange={handlechange} value={loginInfo.password}   id="password"   placeholder="password" />
-                        <label for="password">Password</label>
+                        <label htmlFor="password">Password</label>
                     </div>
                     <p className="recover">
                         <Link href="#">Recover Password</Link>

@@ -9,8 +9,8 @@
 
 }
 .homepage{
-  width: 50vw;
-  height: 50vh;
+  width: 70vw;
+  height: 70vh;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -21,7 +21,7 @@
   box-shadow: 0 0 15px 5px gray;
 }
 
-.homepage .button{
+ .homepage .button{
 background-color:  rgb(125, 125, 235);
 border: 1px solid  rgb(125, 125, 235);
 color:white;
@@ -32,7 +32,7 @@ font-size: 1.25rem;
  outline: none;
  cursor: pointer;
 
-}
+} 
 *{
   padding: 0;
       margin: 0;
@@ -121,17 +121,16 @@ font-size: 1.25rem;
       padding:8px 0;
       border-radius: 5px;
       outline: none;
-      border: none;
+      border: none; 
       width: 100%;
       background-color: rgb(125, 125, 235);
-      color: white;
+       color: white; 
       cursor: pointer;
       transition: 0.9s;
     }
     .btn:hover{
   background: #07001f;
-  
-    }
+    } 
     .or{
       font-size: 1.1rem;
       margin-bottom:1.5 rem;
@@ -165,17 +164,14 @@ font-size: 1.25rem;
       margin:0.9rem ;
       font-weight: bold;
     }
-    button{
+     button{
       color: rgb(125, 125, 235);
       border: none;
       background-color: transparent;
       font-size: 1rem;
       font-weight: bold;
     }
-    button:hover{
-      text-decoration: underline;
-      color: blue;
-    }
+   
 
     .error_msg{
       width: 370px  ;
@@ -186,4 +182,27 @@ font-size: 1.25rem;
       color: white;
       border-radius: 5px;
       text-align: center;
-    }
+    } 
+.profile{
+  display: flex;
+  justify-content: center;
+ /* border: 2px solid rgb(218, 58, 58); */
+ height: 90px;
+ position: relative;
+ margin: 20px 0;
+}
+.profile > img{
+  width: 90px;
+  height: 100%;
+  cursor: pointer;
+  border: 4px solid rgb(172, 163, 163);
+}
+.profile > img:hover{
+  border:4px solid gray;
+}
+/* .profile > input{
+  display: none;
+} */
+
+
+
